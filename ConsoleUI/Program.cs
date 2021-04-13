@@ -13,11 +13,16 @@ namespace ConsoleUI
             //CarGetByDailyPriceTest(carManager);
 
 
-            UserManager userManager = new UserManager(new EfUserDal());
+            //UserManager userManager = new UserManager(new EfUserDal());
 
-            userManager.Add(new User { FirstName = "Akif", LastName = "Yigit", Email = "ayigit@gmail.com", Password = "Akif1111" });
+            //userManager.Add(new User { FirstName = "Akif", LastName = "Yigit", Email = "ayigit@gmail.com", Password = "Akif1111" });
 
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
 
             //GetCarDetailsTest(carManager);
 
