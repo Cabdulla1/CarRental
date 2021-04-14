@@ -44,6 +44,16 @@ namespace ConsoleUI
             //BrandUpdateTest(brandManager);
 
 
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            var result = userManager.GetAll().Data;
+
+            foreach (var user in result)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+
 
         }
 
