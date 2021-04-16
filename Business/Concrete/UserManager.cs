@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAcces.Abstract;
 using Entities.Concrete;
@@ -40,6 +41,23 @@ namespace Business.Concrete
         public IDataResult<User> GetById(int userId)
         {
             return new SuccessDataResult<User>(_userDal.Get(u=>u.Id==userId));
+        }
+
+        public IDataResult<User> GetByMail(string mail)
+        {
+            var result = _userDal.Get(u => u.Email == mail);
+            if (result != null)
+            {
+                return new SuccessDataResult<User>(result);
+            }
+
+            return new ErrorDataResult<User>();
+            
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user).Data);
         }
 
         public IResult Update(User user)

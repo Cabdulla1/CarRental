@@ -2,6 +2,7 @@
 using DataAcces.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
+using System.IO;
 
 namespace ConsoleUI
 {
@@ -17,12 +18,12 @@ namespace ConsoleUI
 
             //userManager.Add(new User { FirstName = "Akif", LastName = "Yigit", Email = "ayigit@gmail.com", Password = "Akif1111" });
 
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            foreach (var customer in customerManager.GetAll().Data)
-            {
-                Console.WriteLine(customer.CompanyName);
-            }
+            //foreach (var customer in customerManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(customer.CompanyName);
+            //}
 
             //GetCarDetailsTest(carManager);
 
@@ -44,15 +45,22 @@ namespace ConsoleUI
             //BrandUpdateTest(brandManager);
 
 
+            //UserManager userManager = new UserManager(new EfUserDal());
+
+            //var result = userManager.GetAll().Data;
+
+            //foreach (var user in result)
+            //{
+            //    Console.WriteLine(user.FirstName);
+            //}
+
+
+            CarRentalContext carRentalContext = new CarRentalContext();
+
             UserManager userManager = new UserManager(new EfUserDal());
 
-            var result = userManager.GetAll().Data;
-
-            foreach (var user in result)
-            {
-                Console.WriteLine(user.FirstName);
-            }
-
+            var result = userManager.GetById(1);
+            Console.WriteLine(result.Data.PasswordHash.ToString());
 
 
         }
