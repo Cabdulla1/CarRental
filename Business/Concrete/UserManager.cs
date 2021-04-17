@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
@@ -20,6 +21,7 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
@@ -27,6 +29,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [SecuredOperation("user.delete")]
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
@@ -60,6 +63,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user).Data);
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
             _userDal.Update(user);
