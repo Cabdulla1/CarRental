@@ -4,6 +4,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAcces.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,7 @@ namespace Business.Concrete
         {
             if (rental.ReturnDate!=null)
             {
+                rental.RentDate = DateTime.Now;
                 _rentalDal.Add(rental);
                 return new SuccessResult();
             }
@@ -50,6 +52,11 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int rentalId)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.Id==rentalId));
+        }
+
+        public IDataResult<List<RentalDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDto>>(_rentalDal.GetRentalDetails());
         }
 
         public IResult Update(Rental rental)
