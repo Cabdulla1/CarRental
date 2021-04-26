@@ -1,7 +1,9 @@
 ﻿using Business.Concrete;
 using DataAcces.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ConsoleUI
@@ -10,7 +12,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+           
             //CarGetByDailyPriceTest(carManager);
 
 
@@ -55,12 +57,14 @@ namespace ConsoleUI
             //}
 
 
-            CarRentalContext carRentalContext = new CarRentalContext();
+            //CarRentalContext carRentalContext = new CarRentalContext();
 
-            UserManager userManager = new UserManager(new EfUserDal());
+            //UserManager userManager = new UserManager(new EfUserDal());
 
-            var result = userManager.GetById(1);
-            Console.WriteLine(result.Data.PasswordHash.ToString());
+            //var result = userManager.GetById(1);
+            //Console.WriteLine(result.Data.PasswordHash.ToString());
+
+
 
 
         }
