@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result);
+            return Ok(result);
         }
 
         [HttpPost("delete")]
@@ -94,10 +94,21 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
+        [HttpGet("getrentaldetailsbyid")]
 
+        public IActionResult GetRentalDetailsById(int id)
+        {
+            var result = _rentalService.GetRentalDetailsById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+
+        }
     }
 }

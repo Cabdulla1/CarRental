@@ -4,6 +4,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace ConsoleUI
@@ -12,7 +13,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-           
+
             //CarGetByDailyPriceTest(carManager);
 
 
@@ -63,6 +64,43 @@ namespace ConsoleUI
 
             //var result = userManager.GetById(1);
             //Console.WriteLine(result.Data.PasswordHash.ToString());
+
+            string date = "04/21/2021";
+            //string date2 = String.Format("{0:MM-dd-yyyy}", date);
+            //DateTime dt = DateTime.Parse(date2);
+
+            DateTime dt = DateTime.ParseExact(date, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            Console.WriteLine(dt.ToString());
+
+
+            //Console.WriteLine(date);
+            //string date1;
+
+            //char[] date3 = date.ToCharArray();
+            //char temp;
+
+            //temp = date3[0];
+            //date3[0] = date3[3];
+            //date3[3] = temp;
+
+            //temp = date3[1];
+            //date3[1] = date3[4];
+            //date3[4] = temp;
+
+            //date1 = new string(date3);
+            //Console.WriteLine(date1);
+
+
+
+            //RentalManager r = new RentalManager(new EfRentalDal());
+
+            //Rental rental = new Rental { RentDate = Convert.ToDateTime("10/05/2021") };
+            //var result = r.GetByDate("13/05/2021");
+
+            //if (result.Data != null)
+            //{
+            //    Console.WriteLine("Arac bu tarihte zaten kiralanmis");
+            //}
 
 
 

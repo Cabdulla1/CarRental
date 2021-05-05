@@ -24,5 +24,8 @@ namespace Business.Constants
         public static string AccessTokenCreated = "Token oluşturuldu";
         public static string ColorsListed = "Renkler listelendi";
         public static string BrandsListed = "Markalar listelendi";
+        public static string CarAlreadyRented = "Araba bu tarihte zaten kiralanmış";
+        public static string CarRented = "Araba kiralandı";
+        public static string PaymentSuccessful = "Ödeme işlemi tamamlandı";
     }
 }
