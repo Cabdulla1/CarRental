@@ -76,6 +76,7 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureCustomExceptionMiddleware();
 
             app.UseFileServer(new FileServerOptions { 
                 FileProvider = new PhysicalFileProvider(

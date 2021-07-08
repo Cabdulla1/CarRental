@@ -38,15 +38,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
 
-        public IDataResult<Color> GetById(int colorId)
+        public IDataResult<List<Color>> GetById(int colorId)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(c=>c.Id == colorId));
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c=>c.Id == colorId));
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
-            return new SuccessResult();
+            return new SuccessResult(Messages.ColorUpdated);
         }
     }
 }

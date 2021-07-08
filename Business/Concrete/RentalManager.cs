@@ -68,8 +68,8 @@ namespace Business.Concrete
 
         public IResult CheckCarAvailable(Rental rental)
         {
-            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate >= rental.RentDate);
-            if (result != null)
+            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate >= rental.RentDate).Count;
+            if (result>=1)
             {
                 return new ErrorResult();
             }

@@ -24,7 +24,7 @@ namespace Business.Concrete
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
-            return new SuccessResult();
+            return new SuccessResult(Messages.BrandAdded);
         }
 
         public IResult Delete(Brand brand)
@@ -38,15 +38,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.BrandsListed);
         }
 
-        public IDataResult<Brand> GetById(int brandId)
+        public IDataResult<List<Brand>> GetById(int brandId)
         { 
-            return new SuccessDataResult<Brand>(_brandDal.Get(b=>b.Id == brandId));
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(b=>b.Id == brandId));
         }
-
+        
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
-            return new SuccessResult();
+            return new SuccessResult(Messages.BrandUpdated);
         }
     }
 }

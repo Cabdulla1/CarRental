@@ -27,5 +27,10 @@ namespace Business.Constants
         public static string CarAlreadyRented = "Araba bu tarihte zaten kiralanmış";
         public static string CarRented = "Araba kiralandı";
         public static string PaymentSuccessful = "Ödeme işlemi tamamlandı";
+        public static string BrandAdded = "Marka Eklendi";
+        public static string BrandUpdated = "Marka Güncellendi";
+        public static string ColorUpdated = "Renk Güncellendi";
+        public static string CarUpdated = "Araba Güncellendi";
+        
     }
 }
