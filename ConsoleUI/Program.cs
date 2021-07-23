@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAcces.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -69,8 +70,8 @@ namespace ConsoleUI
             //string date2 = String.Format("{0:MM-dd-yyyy}", date);
             //DateTime dt = DateTime.Parse(date2);
 
-            DateTime dt = DateTime.ParseExact(date, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            Console.WriteLine(dt.ToString());
+            //DateTime dt = DateTime.ParseExact(date, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            //Console.WriteLine(dt.ToString());
 
 
             //Console.WriteLine(date);
@@ -102,6 +103,12 @@ namespace ConsoleUI
             //    Console.WriteLine("Arac bu tarihte zaten kiralanmis");
             //}
 
+
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            string email = "cavidan2@gmail.com";
+            var result = userManager.GetByMail(email);
+            Console.WriteLine(result.Data.FirstName);
 
 
 
